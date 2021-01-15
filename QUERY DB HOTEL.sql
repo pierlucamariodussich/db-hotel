@@ -24,7 +24,7 @@ SELECT  MAX(price) FROM pagamenti;
 
 -- Seleziona gli ospiti riconosciuti con patente e nati nel 1975
 
-SELECT * FROM ospiti WHERE document_type = "Driver License" AND date_of_birth = "1975" ;
+SELECT * FROM ospiti WHERE document_type = "Driver License" AND YEAR(date_of_birth) = "1975" ;
 
 -- Quanti paganti sono anche ospiti?
 
@@ -69,7 +69,7 @@ SELECT* FROM prenotazioni_has_ospiti JOIN ospiti ON prenotazioni_has_ospiti.ospi
 
 --Stampare Nome, Cognome, Prezzo e Pagante per tutte le prenotazioni fatte a Maggio 2018
 
-SELECT paganti.name, paganti.lastname, pagamenti.price, pagamenti.pagante_id , pagamenti.created_at FROM pagamenti JOIN paganti ON pagamenti.pagante_id = pagante_id WHERE pagamenti.created_at > "2018-05-01" AND pagamenti.created_at > "2018-06-01" ;
+SELECT paganti.name, paganti.lastname, pagamenti.price, pagamenti.pagante_id , pagamenti.created_at FROM pagamenti JOIN paganti ON pagamenti.pagante_id = pagante_id WHERE pagamenti.created_at LIKE "2018-05%";
 
 --Fai la somma di tutti i prezzi delle prenotazioni per le stanze del primo piano
 
